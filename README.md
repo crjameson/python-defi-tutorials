@@ -7,7 +7,7 @@ https://crjameson.substack.com/
 
 If you have any questions, write me a DM on Twitter here: 
 
-https://twitter.com/crjameson_
+[crjameson_ on Twitter](https://twitter.com/crjameson_)
 
 
 
