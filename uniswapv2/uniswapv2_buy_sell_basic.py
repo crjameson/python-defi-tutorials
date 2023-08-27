@@ -1,4 +1,15 @@
-""" how to buy and sell a token on uniswap v2 and derivatives like pancakeswap, sushiswap, etc. """
+"""
+How to buy and sell a token on Uniswap v2 and derivatives like Pancakeswap, Sushiswap, etc. 
+
+For the full tutorial check out my substack here:
+
+https://crjameson.substack.com/
+
+If you have questions or interesting proposals, contact me here: 
+
+https://twitter.com/crjameson_
+"""
+
 import time
 from abi import MIN_ERC20_ABI, UNISWAPV2_ROUTER_ABI
 from web3 import Account, Web3
