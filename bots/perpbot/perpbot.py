@@ -54,27 +54,27 @@ def run_trading_strategy(client, instrument, margin_per_position, last_prices):
         time.sleep(60)
         return
 
-    price = aevopy.get_index(asset=instrument.underlying_asset)
+    price_index = aevopy.get_index(asset=instrument.underlying_asset)
     # our strategy only works when we have 120 prices in our queue
     if len(last_prices) < DON_MAX_PERIOD:
-        print(f"collecting data: {price.timestamp}: price: {price.price}")
+        print(f"collecting data: {price_index.timestamp}: price: {price_index.price}")
     else:
-        min,max = min(last_prices),max(last_prices)
-        print(f"{price.timestamp}: price: {price.price} local min: {min(last_prices)} local max: {max(last_prices)}")
+        min_price,max_price = min(last_prices),max(last_prices)
+        print(f"{price_index.timestamp}: price: {price_index.price} local min: {min_price} local max: {max_price}")
 
         position_size = int(margin_per_position // instrument.index_price)
         
-        if price.price > max:
-            print(f"price: {price.price} is above max: {max} - open long position")
+        if price_index.price > max_price:
+            print(f"price: {price_index.price} is above max: {max_price} - open long position")
             buy(client, instrument, position_size)
             # we reset the queue after we opened a position
             last_prices.clear()
-        if price.price < min:
-            print(f"price: {price.price} is below min: {min} - open short position")
+        if price_index.price < min_price:
+            print(f"price: {price_index.price} is below min: {min_price} - open short position")
             sell(client, instrument, position_size)
             last_prices.clear()
     
-    last_prices.append(price.price)
+    last_prices.append(price_index.price)
 
 
 if __name__ == "__main__":
